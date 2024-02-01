@@ -20,12 +20,14 @@ const Hero = () => {
   useEffect(() => {
     if (
       environment == "development" &&
-      window.ethereum.networkVersion != "11155111"
+      window.ethereum &&
+      window.ethereum?.networkVersion != "11155111"
     ) {
       notifyError("Please switch to the correct network");
     } else if (
       environment == "production" &&
-      window.ethereum.networkVersion != "1"
+      window.ethereum &&
+      window.ethereum?.networkVersion != "1"
     ) {
       notifyError("Please switch to the ethereum network");
     }
