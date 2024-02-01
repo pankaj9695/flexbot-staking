@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import { FaBars, FaTimes } from "react-icons/fa";
-import { Link as ScrollLink } from "react-scroll";
 import ConnectButton from "../components/connectWallet";
 import { notifyInfo } from "../utils/toast";
 

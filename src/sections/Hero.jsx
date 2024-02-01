@@ -1,16 +1,14 @@
-import React from "react";
-import Navbar from "./Navbar";
-import heroImg from "../assets/mainrobot.png";
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { Web3 } from "web3";
 import {
-  tokenABI,
+  environment,
   stackingABI,
   stackingAddress,
+  tokenABI,
   tokenAddress,
-  environment,
 } from "../ABI/tokenABI";
 import { notifyError, notifyInfo } from "../utils/toast";
+import Navbar from "./Navbar";
 
 const Hero = () => {
   const [input, setInput] = React.useState("");
