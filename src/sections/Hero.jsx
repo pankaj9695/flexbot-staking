@@ -117,9 +117,7 @@ const Hero = () => {
             from: ownerAddress,
             to: stackingAddress,
             gas: 5000000,
-            data: stackingContract.methods
-              .stake(String(input * 10 ** Number(decimal)))
-              .encodeABI(),
+            data: stackingContract.methods.stake(amount).encodeABI(),
           };
 
           const stHash = await web3.eth.sendTransaction(txObject);
