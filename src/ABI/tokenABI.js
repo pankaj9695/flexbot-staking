@@ -681,7 +681,7 @@ export const stackingABI = [
     type: "function",
   },
 ];
-export const environment = "production";
+export const environment = "development"; // change to "production" when deploying to mainnet
 export const stackingAddress =
   environment === "development"
     ? "0x509BB8E61E99E3566E5Ab132078F18D9e1C8552C"
