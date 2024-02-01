@@ -1,0 +1,131 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;700&family=Space+Mono:wght@400;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  nav ul li {
+    @apply cursor-pointer text-[16px] xmd:text-sm;
+  }
+  /* .hero .sponsors img {
+    @apply max-w-[180px];
+  } */
+  .about .sponsors img {
+    @apply max-w-[180px];
+  }
+
+  .about .about-box > div {
+    @apply w-full max-w-[900px] xmd:w-[48%] pl-[14px] vsm:pl-[20px] pr-[10px] vsm:pr-[40px] bg-[#7C677E66] hover:bg-[#AD36C5];
+    border-radius: 16px;
+  }
+  .about .about-box > div img {
+    @apply w-[32px] h-[32px] vsm:h-fit vsm:w-fit;
+  }
+  .about .about-box > div h1 {
+    @apply mt-[16px] vsm:mt-[24px] mb-[8px] vsm:mb-[16px] text-[20px] vsm:text-[32px] font-bold;
+  }
+  .about .about-box > div p {
+    @apply text-[12px] vsm:text-base;
+  }
+
+  .features .featureBox {
+    @apply relative xl:absolute h-fit rounded-[12px] vsm:rounded-none border border-[#B9B9CD] vsm:border-none w-[100%] vsm:w-[350px] p-[10px] vsm:p-0 flex flex-col vsm:items-center;
+  }
+  .features .featureBox img {
+    @apply w-[24px] vsm:w-fit h-[24px] vsm:h-fit;
+  }
+  .features .featureBox h1 {
+    @apply mt-[9px] mb-[12px] text-[20px] vsm:text-2xl font-bold leading-[1.2] vsm:text-center;
+  }
+  .features .featureBox p {
+    @apply vsm:text-center text-white text-[10px];
+  }
+
+  .features2 .desc {
+    @apply xl:absolute flex items-center;
+  }
+  .features2 .desc .text {
+    @apply w-[190px] vsm:w-[300px] xl:w-fit px-3 py-[17px] bg-opacity-80 rounded-2xl duration-300;
+    background: rgba(173, 189, 169, 0.8);
+  }
+  .features2 .desc:hover .text {
+    @apply bg-[#AF3BC6];
+  }
+  .features2 .desc .text p {
+    @apply text-[14px] vsm:text-lg font-bold;
+  }
+  .features2 .desc .line {
+    @apply hidden vsm:block h-[1px] bg-[#8B9788];
+  }
+  .features2 .desc .circle {
+    @apply hidden vsm:block w-[34px] h-[34px] rounded-full bg-[#8B9788] duration-300;
+  }
+  .features2 .desc:hover .circle {
+    @apply bg-[#AF3BC6];
+  }
+
+  .socials .social svg {
+    @apply text-[24px] vsm:text-[40px] vsm:mx-auto xl:mx-0;
+  }
+  .socials .social h1 {
+    @apply my-[8px] vsm:my-0 text-[20px] vsm:text-[32px] font-bold vsm:text-center xl:text-left;
+  }
+  .socials .social p {
+    @apply text-[14px]  vsm:text-xl vsm:text-center xl:text-left;
+  }
+
+  footer .links p {
+    @apply text-xl font-bold;
+  }
+  footer .links ul li {
+    @apply text-lg cursor-pointer;
+  }
+}
+
+body {
+  background: #010101;
+}
+
+.hero h1 {
+  background: linear-gradient(178deg, #c5bfe6 1.86%, #a91fbf 90.92%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.typed-text {
+  color: blue;
+}
+
+.cursor {
+  display: inline-block;
+  width: 3px;
+  margin-left: 4px;
+  background: #af3bc6;
+}
+
+.cursor.blink {
+  animation: blink 0.8s ease-in-out infinite;
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    background: #af3bc6;
+  }
+  40%,
+  50% {
+    background: transparent;
+  }
+}
+
+.toggleHeight {
+  overflow: auto;
+  height: 100px !important;
+}
+
+.heading-gradient {
+  background: linear-gradient(to right, #ffa34d, #ff9a5a, #ff5252, #ff4b81);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
