@@ -17,19 +17,19 @@ const Hero = () => {
   const [ownerAddress, setOwnerAddress] = React.useState("");
   const [loading, setLoading] = React.useState(false);
 
-  // useEffect(() => {
-  //   if (
-  //     environment == "development" &&
-  //     window.ethereum.networkVersion != "11155111"
-  //   ) {
-  //     notifyError("Please switch to the correct network");
-  //   } else if (
-  //     environment == "production" &&
-  //     window.ethereum.networkVersion != "1"
-  //   ) {
-  //     notifyError("Please switch to the ethereum network");
-  //   }
-  // }, []);
+  useEffect(() => {
+    if (
+      environment == "development" &&
+      window.ethereum.networkVersion != "11155111"
+    ) {
+      notifyError("Please switch to the correct network");
+    } else if (
+      environment == "production" &&
+      window.ethereum.networkVersion != "1"
+    ) {
+      notifyError("Please switch to the ethereum network");
+    }
+  }, []);
 
   let web3;
   if (environment == "development") {
