@@ -18,7 +18,9 @@ const Hero = () => {
   const [loading, setLoading] = React.useState(false);
 
   useEffect(() => {
-    if (
+    if (!window.ethereum) {
+      notifyError("Please install metamask");
+    } else if (
       environment == "development" &&
       window.ethereum &&
       window.ethereum?.networkVersion != "11155111"
