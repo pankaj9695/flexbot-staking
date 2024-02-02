@@ -12,7 +12,7 @@ import Navbar from "./Navbar";
 
 const Hero = () => {
   const [input, setInput] = React.useState("");
-  const [totalStackAmount, setTotalStackAmount] = React.useState(1);
+  const [totalStackAmount, setTotalStackAmount] = React.useState(0);
   const [balance, setBalance] = React.useState(0);
   const [ownerAddress, setOwnerAddress] = React.useState("");
   const [loading, setLoading] = React.useState(false);
@@ -159,10 +159,8 @@ const Hero = () => {
       .call();
     const decimal = await tokenContract.methods.decimals().call();
     const tsa = BigInt(totalStack.totalStakedAmount);
-    const totalStackAmount = Number(tsa / BigInt(10 ** Number(decimal)));
+    const totalStackAmount = Number(tsa / BigInt(10 ** Number(decimal))) || 0;
     setTotalStackAmount(totalStackAmount);
-    // console.log(totalStackAmount, "totalStackAmount");
-
     return totalStackAmount;
   };
 
@@ -216,7 +214,7 @@ const Hero = () => {
     name: "",
   };
 
-  for (let i = 0; i < botArray.length && totalStackAmount; i++) {
+  for (let i = 0; i < botArray.length; i++) {
     if (i == 0 && totalStackAmount <= botArray[i].value) {
       imageToDisplay.src = botArray[i].src;
       imageToDisplay.name = botArray[i].name;
@@ -237,6 +235,7 @@ const Hero = () => {
       break;
     }
   }
+  console.log(imageToDisplay, "imageToDisplay");
 
   return (
     <div id="hero" className="w-full relative overflow-hidden">
