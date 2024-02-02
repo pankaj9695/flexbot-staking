@@ -39,9 +39,7 @@ const Hero = () => {
   if (environment == "development") {
     web3 = new Web3(window.ethereum);
   } else if (environment == "production") {
-    web3 = new Web3(
-      "https://eth-mainnet.g.alchemy.com/v2/odl_L4aEWoybADUOb_mhYRJMtdTEUruK"
-    );
+    web3 = new Web3(window.ethereum);
   }
   console.log(web3, "web3");
 
