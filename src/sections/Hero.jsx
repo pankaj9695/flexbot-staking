@@ -75,11 +75,18 @@ const Hero = () => {
     if (String(allowance) > "0" && String(allowance > amount)) {
       console.log("in the if", stackingContract.methods);
       const stakeVar = stackingContract.methods.stake(amount);
+      const gas = await web3.eth.estimateGas({
+        from: ownerAddress,
+        to: stackingAddress,
+        data: stakeVar.encodeABI(),
+      });
+      console.log(gas, "gas");
+      // return;
       console.log(stakeVar, "stakeVar");
       const txObject = {
         from: ownerAddress,
         to: stackingAddress,
-        gas: 5000000,
+        gas: gas * BigInt(2),
         data: stakeVar.encodeABI(),
       };
       console.log(txObject, "txObject");
@@ -97,10 +104,17 @@ const Hero = () => {
     } else {
       try {
         console.log(amount, "amount");
+        const gas = await web3.eth.estimateGas({
+          from: ownerAddress,
+          to: tokenAddress,
+          data: tokenContract.methods
+            .approve(stackingAddress, MAX_INT)
+            .encodeABI(),
+        });
         const txObject = {
           from: ownerAddress,
           to: tokenAddress,
-          gas: 5000000,
+          gas: gas * BigInt(2),
           data: tokenContract.methods
             .approve(stackingAddress, MAX_INT)
             .encodeABI(),
@@ -111,10 +125,15 @@ const Hero = () => {
         if (txHash && String(txHash.status) === "1") {
           console.log("stacking");
           const decimal = await tokenContract.methods.decimals().call();
+          const gas = await web3.eth.estimateGas({
+            from: ownerAddress,
+            to: stackingAddress,
+            data: stackingContract.methods.stake(amount).encodeABI(),
+          });
           const txObject = {
             from: ownerAddress,
             to: stackingAddress,
-            gas: 5000000,
+            gas: gas * BigInt(2),
             data: stackingContract.methods.stake(amount).encodeABI(),
           };
 
