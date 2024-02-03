@@ -41,12 +41,12 @@ const Hero = () => {
   } else if (environment == "production") {
     web3 = new Web3(window.ethereum);
   }
-  console.log(web3, "web3");
+  // console.log(web3, "web3");
 
   let tokenContract = new web3.eth.Contract(tokenABI, tokenAddress);
 
   let stackingContract = new web3.eth.Contract(stackingABI, stackingAddress);
-  console.log(input, "input");
+  // console.log(input, "input");
 
   const MAX_INT =
     "115792089237316195423570985008687907853269984665640564039457584007913129639935";
@@ -65,31 +65,31 @@ const Hero = () => {
     // console.log("2");
     // const amount = String(BigInt(Math.round(input * 10 ** Number(decimal))));
     const amount = web3.utils.toWei(input, "ether");
-    console.log(amount, typeof amount);
+    // console.log(amount, typeof amount);
     // return;
     const allowance = await tokenContract.methods
       .allowance(ownerAddress, stackingAddress)
       .call();
 
-    console.log(String(allowance), "allowance");
+    // console.log(String(allowance), "allowance");
     if (String(allowance) > "0" && String(allowance > amount)) {
-      console.log("in the if", stackingContract.methods);
+      // console.log("in the if", stackingContract.methods);
       const stakeVar = stackingContract.methods.stake(amount);
       const gas = await web3.eth.estimateGas({
         from: ownerAddress,
         to: stackingAddress,
         data: stakeVar.encodeABI(),
       });
-      console.log(gas, "gas");
+      // console.log(gas, "gas");
       // return;
-      console.log(stakeVar, "stakeVar");
+      // console.log(stakeVar, "stakeVar");
       const txObject = {
         from: ownerAddress,
         to: stackingAddress,
         gas: gas * BigInt(2),
         data: stakeVar.encodeABI(),
       };
-      console.log(txObject, "txObject");
+      // console.log(txObject, "txObject");
 
       try {
         const stHash = await web3.eth.sendTransaction(txObject);
@@ -103,7 +103,7 @@ const Hero = () => {
       }
     } else {
       try {
-        console.log(amount, "amount");
+        // console.log(amount, "amount");
         const gas = await web3.eth.estimateGas({
           from: ownerAddress,
           to: tokenAddress,
@@ -123,7 +123,7 @@ const Hero = () => {
         const txHash = await web3.eth.sendTransaction(txObject);
 
         if (txHash && String(txHash.status) === "1") {
-          console.log("stacking");
+          // console.log("stacking");
           const decimal = await tokenContract.methods.decimals().call();
           const gas = await web3.eth.estimateGas({
             from: ownerAddress,
@@ -141,7 +141,7 @@ const Hero = () => {
           setLoading(false);
           notifyInfo("Staking successful");
           setInput("");
-          console.log(stHash, "stHash");
+          // console.log(stHash, "stHash");
         }
       } catch (e) {
         setLoading(false);
@@ -167,7 +167,7 @@ const Hero = () => {
   const fetchBalance = async () => {
     const balance = await tokenContract.methods.balanceOf(ownerAddress).call();
     setBalance(Number(BigInt(balance) / BigInt(10 ** 18)));
-    console.log(balance, "balance");
+    // console.log(balance, "balance");
     return balance;
   };
 
@@ -180,7 +180,7 @@ const Hero = () => {
     // setTotalStackAmount(rs);
   }, [totalStackAmount, balance, ownerAddress]);
 
-  console.log(totalStackAmount, "totalStackAmount");
+  // console.log(totalStackAmount, "totalStackAmount");
 
   const botArray = [
     {
@@ -235,7 +235,7 @@ const Hero = () => {
       break;
     }
   }
-  console.log(imageToDisplay, "imageToDisplay");
+  // console.log(imageToDisplay, "imageToDisplay");
 
   return (
     <div id="hero" className="w-full relative overflow-hidden">
